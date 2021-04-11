@@ -41,7 +41,7 @@ function buildNavBar() {
     for (section of sections) {
         const idOfSection = section.id;
         const dataNavOfSection = section.dataset.nav;
-      
+
         //console.log(section);
         const newListItem = document.createElement('li');
         newListItem.innerHTML = `<a class="menu__link" href="#${idOfSection}">${dataNavOfSection}</a>`
@@ -51,20 +51,82 @@ function buildNavBar() {
 
 buildNavBar();
 
-// Add class 'active' to section when near top of viewport
+// Add class 'active' to section 
 window.addEventListener('scroll', setActiveClass);
 
 function setActiveClass(event){
-    console.dir(event);
+    //console.dir(event);
     const scrollPosition = window.scrollY;
-    console.log(scrollPosition);
+    let lastScroll = 0;
+    //console.log(scrollPosition);
+    const sections = document.querySelectorAll('section')
+
+    //let scrollPosition2 = window.scrollY;
+   /*  if (scrollPosition2 > lastScroll) {
+        console.log('downscroll');
+    } else if (scrollPosition2 < lastScroll) {
+        console.log('upscroll');
+    }
+ */
+    
+    /* function deleteClassAndStyle(sections) {
+        sections.forEach(section => {
+            section.classList.remove('your-active-class');
+            section.style.border = 'none';
+        });
+ */
+        function deleteClassAndStyle() {
+           
+           sections.forEach(section => {
+            section.classList.remove('your-active-class');
+            section.style.border = 'none';
+        });
+
+            /* for (let i=0; i <= 4; i++) {
+                sections[i].classList.remove('your-active-class');
+                sections[i].style.border = 'none';
+            } */
+            console.log(sections);
+        } 
+   
+   deleteClassAndStyle();
+   
+       /*  if (scrollPosition2 > lastScroll) {
+        console.log('downscroll');
+         */
+
+        if (scrollPosition > 600 && scrollPosition < 1300) {
+            //deleteClassAndStyle();
+            sections[0].classList.add('your-active-class');
+            sections[0].style.border ="3px solid yellow";
+
+        } else if (scrollPosition > 1300 && scrollPosition < 2000) {
+            //deleteClassAndStyle();
+            sections[1].classList.add('your-active-class');
+            //sections[0].classList.remove('your-active-class');
+            sections[1].style.border ="3px solid green";
+            //sections[0].style.border = '0px none';
+
+         }else if (scrollPosition > 2000 && scrollPosition < 2700) {
+            //deleteClassAndStyle();
+            sections[2].classList.add('your-active-class');
+            //sections[1].classList.remove('your-active-class');
+            sections[2].style.border ="3px solid red";
+            //sections[1].style.border = '0px none';
+
+        } else if (scrollPosition > 2700 ) {
+            //deleteClassAndStyle();
+            sections[3].classList.add('your-active-class');
+            //sections[2].classList.remove('your-active-class');
+            sections[3].style.border ="3px solid black";
+            //sections[2].style.border = '0px none';
+        }
+    /* } else {
+        console.log('upscroll');
+        } */
 }
 
-/* let sections = document.querySelectorAll('section')
-function getActiveClass(sections) {
     
-    console.log(Math.floor(sections.getBoundingClientRect().top));
-}; */
 // Scroll to anchor ID using scrollTO event
 
 
