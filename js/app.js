@@ -102,3 +102,26 @@ function setActiveClass(event){
 // Set sections as active
 
 
+/*Playground -Test section: adding additional content by clicking the button on the bottom*/
+
+let getButtonData = document.querySelector('button');
+getButtonData.addEventListener('click', function (e) {
+       
+    let getMain = document.querySelector('main');
+    let elementCountInsideOfMain = getMain.childElementCount; 
+   
+    let addSection = document.querySelector('#section1');
+    let clone = addSection.cloneNode(true);
+    clone.id = 'section' + [elementCountInsideOfMain];
+    clone.dataset.nav = 'Section ' + [elementCountInsideOfMain];
+    getMain.appendChild(clone);
+    
+    // building the nav ULIST
+    for (let i = 0; i < section.length; i++) {
+         
+        let newListItem = document.createElement('li');
+        //newListItem.style.color = 'green';
+        newListItem.innerHTML = `<a href="#section${i}">Section${i}</a>`;
+        navbarList.appendChild(newListItem);
+    }
+})
