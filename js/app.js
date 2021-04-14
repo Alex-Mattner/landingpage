@@ -18,7 +18,8 @@
  * 
 */
 let sectionsGlobal = document.querySelectorAll('section');
-
+const sections2 = document.querySelectorAll('section');
+//const idOfSectionTest;
 /**
  * End Global Variables
  * Start Helper Functions
@@ -53,6 +54,17 @@ buildNavBar();
 
 // Add and remove class 'active' to section and mark section on scroll 
 window.addEventListener('scroll', setActiveClass);
+//let elem = document.getElementById('section1');
+
+window.addEventListener('scroll', checkSectionInViewPort);
+
+function checkSectionInViewPort () {
+    let elem = document.getElementById('section1');
+    console.log(elem);
+    let rect = elem.getBoundingClientRect();
+    
+    return (rect.top >=0);
+}
 
 function setActiveClass(event){
     const scrollPosition = window.scrollY;
@@ -103,19 +115,27 @@ const navItems= document.getElementsByClassName('menu__link');
 /* const links = document.querySelectorAll('.navbar__menu a');
 console.log(links);*/
 
-for (const navItem of navItems) {
+/* for (const navItem of navItems) {
     navItem.addEventListener('click', scrollToView(event));
     
-}
+} */
 //console.log(sectionsGlobal);
-function scrollToView (event) {
+/* function scrollToView (event) {
     //event.preventDefault();
-    console.log(sectionsGlobal);
-    for (let i = 0; i < sectionsGlobal; i++) {
+    if (sections2.id = 'section1') {
+        console.log(sections2.id);
+
+    } else if (sections2.id = 'section2') {
+        console.log('section2')
+    } else {
+        console.log('test');
+    }
+   */  //console.log(sectionsGlobal);
+    /* for (let i = 0; i < sectionsGlobal; i++) {
         //sectionsGlobal[i].scroll(100,100);
         console.log('hello')
         //addEventListener('scroll', sectionScroll(navItem));
-    }
+    } */
     
     
     /* navItem.addEventListener('click', () => {
@@ -123,7 +143,7 @@ function scrollToView (event) {
             navItems[i].addEventListener('scroll', sectionScroll(navItem));
         }
     })    */
-}
+//}
 
 /* 
 function scrolltoSection(event) {
