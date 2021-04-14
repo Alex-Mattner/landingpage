@@ -17,7 +17,7 @@
  * Define Global Variables
  * 
 */
-
+let sectionsGlobal = document.querySelectorAll('section');
 
 /**
  * End Global Variables
@@ -98,6 +98,38 @@ function setActiveClass(event){
 // Build menu 
 
 // Scroll to section on link click
+const navItems= document.getElementsByClassName('menu__link');
+//console.log(navItems);
+/* const links = document.querySelectorAll('.navbar__menu a');
+console.log(links);*/
+
+for (const navItem of navItems) {
+    navItem.addEventListener('click', scrollToView(event));
+    
+}
+//console.log(sectionsGlobal);
+function scrollToView (event) {
+    //event.preventDefault();
+    console.log(sectionsGlobal);
+    for (let i = 0; i < sectionsGlobal; i++) {
+        //sectionsGlobal[i].scroll(100,100);
+        console.log('hello')
+        //addEventListener('scroll', sectionScroll(navItem));
+    }
+    
+    
+    /* navItem.addEventListener('click', () => {
+        for(i = 0; i < navItems ; i++) {
+            navItems[i].addEventListener('scroll', sectionScroll(navItem));
+        }
+    })    */
+}
+
+/* 
+function scrolltoSection(event) {
+    console.log('hello');
+} */
+
 
 // Set sections as active
 
