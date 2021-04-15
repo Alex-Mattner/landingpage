@@ -19,16 +19,15 @@ let sectionsGlobal = document.querySelectorAll('section');
 
 // build the nav
 const navBar = document.getElementById('navbar__list');
-//console.log(navBar);
+
 function buildNavBar() {
     const sections = document.querySelectorAll('section');
-    //console.log(sections);
+    
     for (section of sections) {
-        //const active = 'active'
+       
         const idOfSection = section.id;
         const dataNavOfSection = section.dataset.nav;
 
-        //console.log(section);
         const newListItem = document.createElement('li');
         newListItem.innerHTML = `<a class="menu__link" href="#${idOfSection}">${dataNavOfSection}</a>`
         navBar.appendChild(newListItem);
@@ -52,10 +51,9 @@ function checkSectionInViewPort () {
     const li4 = document.querySelectorAll('li')[3];
        
     let activeSection = '';
-    //console.log(pageYOffset);
+    
     sectionsGlobal.forEach( sectionGlobal => {
         const sectionTop = sectionGlobal.offsetTop;
-        //console.log(sectionTop);
         
         if(pageYOffset >= sectionTop) {
             activeSection = sectionGlobal.getAttribute('id');
@@ -116,8 +114,7 @@ function setActiveClass(event){
         }
 }
 
-    
-
+ 
 // Scroll to anchor ID using scrollTO event
     /*****************************
      
@@ -126,27 +123,3 @@ function setActiveClass(event){
     *****************************/
 
 
-
-/*Playground -Test section: adding additional content by clicking the button on the bottom*/
-
-let getButtonData = document.querySelector('button');
-getButtonData.addEventListener('click', function (e) {
-       
-    let getMain = document.querySelector('main');
-    let elementCountInsideOfMain = getMain.childElementCount; 
-   
-    let addSection = document.querySelector('#section1');
-    let clone = addSection.cloneNode(true);
-    clone.id = 'section' + [elementCountInsideOfMain];
-    clone.dataset.nav = 'Section ' + [elementCountInsideOfMain];
-    getMain.appendChild(clone);
-    
-    // building the nav ULIST
-    for (let i = 0; i < section.length; i++) {
-         
-        let newListItem = document.createElement('li');
-        //newListItem.style.color = 'green';
-        newListItem.innerHTML = `<a href="#section${i}">Section${i}</a>`;
-        navbarList.appendChild(newListItem);
-    }
-})
