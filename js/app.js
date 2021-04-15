@@ -13,25 +13,9 @@
  * 
 */
 
-/**
- * Define Global Variables
- * 
-*/
+//Define Global Variables
 let sectionsGlobal = document.querySelectorAll('section');
-const sections2 = document.querySelectorAll('section');
-//const idOfSectionTest;
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
 
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
 
 // build the nav
 const navBar = document.getElementById('navbar__list');
@@ -40,6 +24,7 @@ function buildNavBar() {
     const sections = document.querySelectorAll('section');
     //console.log(sections);
     for (section of sections) {
+        //const active = 'active'
         const idOfSection = section.id;
         const dataNavOfSection = section.dataset.nav;
 
@@ -48,22 +33,56 @@ function buildNavBar() {
         newListItem.innerHTML = `<a class="menu__link" href="#${idOfSection}">${dataNavOfSection}</a>`
         navBar.appendChild(newListItem);
     }
+    const firstListItem = document.querySelector('li');
+    firstListItem.classList.add('active');
 }
 
 buildNavBar();
 
-// Add and remove class 'active' to section and mark section on scroll 
-window.addEventListener('scroll', setActiveClass);
-//let elem = document.getElementById('section1');
 
+// Add and remove class 'active' to section and mark section on scroll 
+const navItems = document.querySelectorAll('li');
+window.addEventListener('scroll', setActiveClass);
 window.addEventListener('scroll', checkSectionInViewPort);
 
 function checkSectionInViewPort () {
-    let elem = document.getElementById('section1');
-    console.log(elem);
-    let rect = elem.getBoundingClientRect();
-    
-    return (rect.top >=0);
+    const li1 = document.querySelectorAll('li')[0];
+    const li2 = document.querySelectorAll('li')[1];
+    const li3 = document.querySelectorAll('li')[2];
+    const li4 = document.querySelectorAll('li')[3];
+       
+    let activeSection = '';
+    //console.log(pageYOffset);
+    sectionsGlobal.forEach( sectionGlobal => {
+        const sectionTop = sectionGlobal.offsetTop;
+        //console.log(sectionTop);
+        
+        if(pageYOffset >= sectionTop) {
+            activeSection = sectionGlobal.getAttribute('id');
+        }
+    })
+       
+    //remove class 'active'    
+    function deleteClassActive() {
+        navItems.forEach(navItem => {
+            navItem.classList.remove('active');
+        });
+    } 
+
+    deleteClassActive();
+
+    // setting active class
+    if(activeSection === 'section1') {
+        li1.classList.add('active');
+    } else if (activeSection === 'section2') {
+        li2.classList.add('active');
+    } else if (activeSection === 'section3') {
+        li3.classList.add('active');
+    } else if (activeSection === 'section3'){
+        li4.classList.add('active');
+    } else if (activeSection === 'section4'){
+        li4.classList.add('active');
+    }  
 }
 
 function setActiveClass(event){
@@ -98,60 +117,14 @@ function setActiveClass(event){
 }
 
     
+
 // Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-const navItems= document.getElementsByClassName('menu__link');
-//console.log(navItems);
-/* const links = document.querySelectorAll('.navbar__menu a');
-console.log(links);*/
-
-/* for (const navItem of navItems) {
-    navItem.addEventListener('click', scrollToView(event));
+    /*****************************
+     
+    IMPLEMENTED VIA CSS SCROLL BEHAVIOUR
     
-} */
-//console.log(sectionsGlobal);
-/* function scrollToView (event) {
-    //event.preventDefault();
-    if (sections2.id = 'section1') {
-        console.log(sections2.id);
+    *****************************/
 
-    } else if (sections2.id = 'section2') {
-        console.log('section2')
-    } else {
-        console.log('test');
-    }
-   */  //console.log(sectionsGlobal);
-    /* for (let i = 0; i < sectionsGlobal; i++) {
-        //sectionsGlobal[i].scroll(100,100);
-        console.log('hello')
-        //addEventListener('scroll', sectionScroll(navItem));
-    } */
-    
-    
-    /* navItem.addEventListener('click', () => {
-        for(i = 0; i < navItems ; i++) {
-            navItems[i].addEventListener('scroll', sectionScroll(navItem));
-        }
-    })    */
-//}
-
-/* 
-function scrolltoSection(event) {
-    console.log('hello');
-} */
-
-
-// Set sections as active
 
 
 /*Playground -Test section: adding additional content by clicking the button on the bottom*/
