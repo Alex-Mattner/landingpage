@@ -32,30 +32,37 @@ function buildNavBar() {
         newListItem.innerHTML = `<a class="menu__link" href="#${idOfSection}">${dataNavOfSection}</a>`
         navBar.appendChild(newListItem);
     }
+    const firstListItem = document.querySelector('li');
+    //firstListItem.classList.add('active');
 }
 
 buildNavBar();
 
 
-// Add and remove class="active" to navbar list items and highlight li item shown in viewport 
+// Add and remove class 'active' to section and mark section on scroll 
 const navItems = document.querySelectorAll('li');
 window.addEventListener('scroll', setActiveClass);
+//window.addEventListener('scroll', checkSectionInViewPort);
 
-//implementing the functionality using getBoundingClientRect()
-window.addEventListener('scroll', sectionViewd);
-function sectionViewd() {
+//reparing the functionality with getBoundingClientRect()
+window.addEventListener('scroll', testFunction);
+function testFunction() {
     const section1 = document.getElementById('section1');
     const yOffsetSection1 =section1.getBoundingClientRect();
-    
+    //console.log(yOffsetSection1);
+
     const section2 = document.getElementById('section2');
     const yOffsetSection2 =section2.getBoundingClientRect();
-    
+    console.log(yOffsetSection2);
+
     const section3 = document.getElementById('section3');
     const yOffsetSection3 =section3.getBoundingClientRect();
-    
+    //console.log(yOffsetSection3);
+
     const section4 = document.getElementById('section4');
     const yOffsetSection4 =section4.getBoundingClientRect();
-    
+    //console.log(yOffsetSection4);
+
     const li1 = document.querySelectorAll('li')[0];
     const li2 = document.querySelectorAll('li')[1];
     const li3 = document.querySelectorAll('li')[2];
@@ -84,11 +91,53 @@ function sectionViewd() {
         deleteClassActive();
         li4.classList.add('active')
     }
+
    
 }
 
 
-// set and delete class="your-active-class" at different sections in viewport
+
+
+function checkSectionInViewPort () {
+    /*  const li1 = document.querySelectorAll('li')[0];
+    const li2 = document.querySelectorAll('li')[1];
+    const li3 = document.querySelectorAll('li')[2];
+    const li4 = document.querySelectorAll('li')[3];
+       
+    let activeSection = '';
+    
+    sectionsGlobal.forEach( sectionGlobal => {
+        const sectionTop = sectionGlobal.offsetTop;
+        
+        if(pageYOffset >= sectionTop) {
+            activeSection = sectionGlobal.getAttribute('id');
+        }
+    })
+       
+    //remove class 'active'    
+    function deleteClassActive() {
+        navItems.forEach(navItem => {
+            navItem.classList.remove('active');
+        });
+    } 
+
+    deleteClassActive();
+
+    // setting active class
+   if(activeSection === 'section1') {
+        li1.classList.add('active');
+    } else if (activeSection === 'section2') {
+        li2.classList.add('active');
+    } else if (activeSection === 'section3') {
+        li3.classList.add('active');
+    } else if (activeSection === 'section3'){
+        li4.classList.add('active');
+    } else if (activeSection === 'section4'){
+        li4.classList.add('active');
+    }  
+    */
+} 
+
 function setActiveClass(event){
     const scrollPosition = window.scrollY;
     const sections = document.querySelectorAll('section')

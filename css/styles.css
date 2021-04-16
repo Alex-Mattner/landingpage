@@ -92,10 +92,11 @@ section {
     transition: ease 0.3s all;
 }
 
-li.active {
+.active {
     background: yellow;
     opacity: 0.5;
-}
+} 
+
 
 /* Header Styles */
 .page__header {
