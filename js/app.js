@@ -90,7 +90,6 @@ function sectionViewd() {
 
 // set and delete class="your-active-class" at different sections in viewport
 function setActiveClass(event){
-    const scrollPosition = window.scrollY;
     const sections = document.querySelectorAll('section')
 
         function deleteClassAndStyle() {
@@ -100,24 +99,29 @@ function setActiveClass(event){
             });
         } 
    
-   deleteClassAndStyle();
-
-        if (scrollPosition > 600 && scrollPosition < 1300) {
+        const positionSection1 = sections[0].getBoundingClientRect();
+        const positionSection2 = sections[1].getBoundingClientRect();
+        const positionSection3 = sections[2].getBoundingClientRect();
+        const positionSection4 = sections[3].getBoundingClientRect();
+        
+        if (positionSection1.top < 0) {
+            deleteClassAndStyle();
             sections[0].classList.add('your-active-class');
             sections[0].style.border ="3px solid yellow";
-
-        } else if (scrollPosition > 1300 && scrollPosition < 2000) {
+        } if (positionSection2.top < 0) {
+            deleteClassAndStyle();
             sections[1].classList.add('your-active-class');
-            sections[1].style.border ="3px solid green";
-
-         }else if (scrollPosition > 2000 && scrollPosition < 2700) {
+            sections[1].style.border ="3px solid yellow";
+        } if (positionSection3.top < 0) {
+            deleteClassAndStyle();
             sections[2].classList.add('your-active-class');
-            sections[2].style.border ="3px solid red";
-
-        } else if (scrollPosition > 2700 ) {
+            sections[2].style.border ="3px solid yellow";
+        } if (positionSection4.top < 0) {
+            deleteClassAndStyle();
             sections[3].classList.add('your-active-class');
-            sections[3].style.border ="3px solid black";
-        }
+            sections[3].style.border ="3px solid yellow";
+        } 
+
 }
 
  
